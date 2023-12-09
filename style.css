@@ -1,33 +1,33 @@
 body, html {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f0f0f0; /* Optional: for better visibility */
-  }
-  
-  .content {
-    text-align: center;
-  }
-  
-  #diagram {
-    margin-top: 20px;
-  }
-  
-  .node circle {
-    fill: #fff;
-    stroke: steelblue;
-    stroke-width: 3px;
-  }
-  
-  .node text { 
-    font: 12px sans-serif; 
-  }
-  
-  .link {
-    fill: none;
-    stroke: #ccc;
-    stroke-width: 2px;
-  }
-  
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0;
+}
+
+.controls {
+  margin-bottom: 10px;
+}
+
+#diagram {
+  margin-top: 20px;
+}
+
+.node circle {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 3px;
+}
+
+.node text { 
+  font: 12px sans-serif; 
+}
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 2px;
+}
