@@ -7,14 +7,17 @@
 <body>
     <div class="controls">
         <label for="nodeColorPicker">Choose Node and Link Color:</label>
-        <input type="color" id="nodeColorPicker" value="#ff0000"> <!-- Default color set to red -->
-
+        <input type="color" id="nodeColorPicker" value="#ff0000">
+        
         <label for="bgColorPicker">Choose Background Color:</label>
-        <input type="color" id="bgColorPicker" value="#ffffff"> <!-- Default background color set to white -->
+        <input type="color" id="bgColorPicker" value="#ffffff">
     </div>
+
     <input type="file" id="fileInput">
+    <textarea id="textInput" placeholder="Or paste your text here"></textarea>
     <button id="makeDiagram">Make Diagram</button>
     <div id="diagram"></div>
+
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="script.js"></script>
 </body>
