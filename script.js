@@ -1,20 +1,42 @@
 document.addEventListener('DOMContentLoaded', function() {
     var fileInput = document.getElementById('fileInput');
+    var makeDiagramButton = document.getElementById('makeDiagram');
+    var nodeColorPicker = document.getElementById('nodeColorPicker');
+    var bgColorPicker = document.getElementById('bgColorPicker');
+    var selectedFile;
+    var nodeColor = nodeColorPicker.value;
+    var bgColor = bgColorPicker.value;
+    var fileContent = '';
+
     fileInput.addEventListener('change', function(e) {
-        var file = e.target.files[0];
-        if (!file) return;
+        selectedFile = e.target.files[0];
+        if (selectedFile) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                fileContent = e.target.result;
+            };
+            reader.readAsText(selectedFile);
+        }
+    });
 
-        var fileName = file.name.split('.')[0]; // Get the filename without extension
+    nodeColorPicker.addEventListener('change', function() {
+        nodeColor = nodeColorPicker.value;
+    });
 
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            var contents = e.target.result;
-            var parsedData = parseData(contents, fileName); // Pass the filename to parseData
-            drawTree(parsedData);
-        };
-        reader.readAsText(file);
+    bgColorPicker.addEventListener('change', function() {
+        bgColor = bgColorPicker.value;
+    });
+
+    makeDiagramButton.addEventListener('click', function() {
+        if (fileContent) {
+            var parsedData = parseData(fileContent, selectedFile.name.split('.')[0]);
+            drawTree(parsedData, nodeColor, bgColor);
+        } else {
+            alert("Please select a file.");
+        }
     });
 });
+
 
 function parseData(text, rootName) {
     var lines = text.split('\n');
@@ -40,7 +62,7 @@ function parseData(text, rootName) {
     return root;
 }
 
-function drawTree(data) {
+function drawTree(data, nodeColor, bgColor) {
     d3.select('#diagram svg').remove(); // Clear previous tree
 
     var margin = {top: 20, right: 120, bottom: 20, left: 120};
@@ -54,6 +76,7 @@ function drawTree(data) {
     var svg = d3.select('#diagram').append('svg')
         .attr('width', width + margin.right + margin.left)
         .attr('height', height + margin.top + margin.bottom)
+        .style('background-color', bgColor) // Use bgColor for background color
         .append('g')
         .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
@@ -66,7 +89,10 @@ function drawTree(data) {
         .attr('d', d3.linkHorizontal()
             .x(function(d) { return d.y; })
             .y(function(d) { return d.x; })
-        );
+        )
+        .style('fill', 'none')
+        .style('stroke', nodeColor) // Use nodeColor for link color
+        .style('stroke-width', '2px');
 
     // Draw the nodes
     var nodes = svg.selectAll('.node')
@@ -77,12 +103,14 @@ function drawTree(data) {
         .attr('transform', function(d) { return 'translate(' + d.y + ',' + d.x + ')'; });
 
     nodes.append('circle')
-        .attr('r', 5);
+        .attr('r', 5)
+        .style('fill', nodeColor) // Use nodeColor for node fill
+        .style('stroke', 'black'); // You can change this if needed
 
     // Add the labels
     nodes.append('text')
-        .attr('dy', -10) // Adjust this value to move labels vertically
-        .attr('x', function(d) { return d.children ? -15 : 15; }) // Adjust for left or right side
-        .style('text-anchor', function(d) { return d.children ? 'end' : 'start'; })
-        .text(function(d) { return d.data.name; });
+    .attr('dy', '-1em') // Move the text up above the node
+    .attr('x', 0) // Center the text horizontally
+    .style('text-anchor', 'middle') // Ensure the text is centered
+    .text(function(d) { return d.data.name; });
 }
