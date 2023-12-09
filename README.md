@@ -4,6 +4,8 @@ Can be used to integrate in websites or node.js applications do dynamically crea
 
 For us as a tool:
 
+Run locally (explanation below) or go to this link: https://rawcdn.githack.com/PiMo131/DynaGram/6fd8ea99298a0b8578970bb93a6a0515240906a2/index.html 
+
 Place all files in the same folder and open the 'index.html' file. 
 you will be asked to select a file and color scheme for the diagram
 ![image](https://github.com/PiMo131/DynaGram/assets/32663614/dfa29b51-72b8-4ca5-bcbb-2752c7108990)
