@@ -5,10 +5,16 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <div class="content">
-        <input type="file" id="fileInput">
-        <div id="diagram"></div>
+    <div class="controls">
+        <label for="nodeColorPicker">Choose Node and Link Color:</label>
+        <input type="color" id="nodeColorPicker" value="#ff0000"> <!-- Default color set to red -->
+
+        <label for="bgColorPicker">Choose Background Color:</label>
+        <input type="color" id="bgColorPicker" value="#ffffff"> <!-- Default background color set to white -->
     </div>
+    <input type="file" id="fileInput">
+    <button id="makeDiagram">Make Diagram</button>
+    <div id="diagram"></div>
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="script.js"></script>
 </body>
