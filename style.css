@@ -31,3 +31,14 @@ body, html {
   stroke: #ccc;
   stroke-width: 2px;
 }
+
+#textInput {
+  width: 80%;  /* Width of the text area */
+  height: 150px; /* Height of the text area */
+  margin: 10px 0; /* Add some margin around the text area */
+  padding: 10px; /* Inner space for the text area */
+  font-size: 16px; /* Adjust the font size if needed */
+  border: 1px solid #ccc; /* Optional border */
+  box-shadow: 2px 2px 4px #eee; /* Optional shadow for better visibility */
+}
+
