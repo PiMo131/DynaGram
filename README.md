@@ -4,7 +4,7 @@ Can be used to integrate in websites or node.js applications do dynamically crea
 
 **For us as a tool:**
 
-Run locally (explanation below) or go to this link: https://rawcdn.githack.com/PiMo131/DynaGram/6fd8ea99298a0b8578970bb93a6a0515240906a2/index.html 
+Run locally (explanation below) or go to this link: https://rawcdn.githack.com/PiMo131/DynaGram/3ea5cf066f81629e581c5ef2256a81e074c1ecb6/index.html 
 
 you can format a textfile in the following way:
 You start with the name of the first node (root)
